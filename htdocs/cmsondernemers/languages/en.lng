@@ -1,0 +1,27 @@
+<?php
+
+  $en = array(
+
+    'app_title' => 'ATK5 Demo Application',
+    'app_shorttitle' => 'ATK5Demo',
+    'app_description' => 'Welcome to the ATK5 demo. Please select a lesson from the menu on your left.'
+
+	,  'app_title_iisg' => 'IISG - Content Beheer Systeem (built using ATK5)'
+	,  'txt_app_title_iisg' => 'IISG - Content Beheer Systeem (built using ATK5)'
+
+	, 'app_title' => 'Uitleg over ...'
+	, 'txt_app_title' => 'Uitleg over ...'
+
+	, 'app_shorttitle_iisg' => 'IISG - Content Beheer Systeem'
+	, 'txt_app_shorttitle_iisg' => 'IISG - Content Beheer Systeem'
+
+	, 'app_description_iisg' => 'Dit is het IISG Content Beheer Systeem. Kies uit één van de hiernaast getoonde menu keuzes.'
+	, 'txt_app_description_iisg' => 'Dit is het IISG Content Beheer Systeem. Kies uit één van de hiernaast getoonde menu keuzes.'
+
+	, "view_xml_file" => "Bekijk XML bestand"
+	, "create_xml_file" => "Cre&euml;er XML bestand"
+
+  );
+
+
+?>

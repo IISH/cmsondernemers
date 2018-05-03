@@ -1,0 +1,109 @@
+<?php
+   $theme = array(
+   "customtpls" => array(
+     "0" => array(
+       "atk/themes/iisg" => array(
+         "0" => "box.tpl",
+         "1" => "login.tpl",
+         "2" => "tabs.tpl",
+         "3" => "top.tpl",
+         "4" => "editform.tpl",
+       ),
+     ),
+     "1" => array(
+       "atk/themes/default" => array(
+         "0" => "action.tpl",
+         "1" => "action_view.tpl",
+         "2" => "actionpage.tpl",
+         "3" => "box.tpl",
+         "4" => "editform.tpl",
+         "5" => "list.tpl",
+         "6" => "login.tpl",
+         "7" => "recordlist.tpl",
+         "8" => "searchform.tpl",
+         "9" => "statusbar.tpl",
+         "10" => "tabs.tpl",
+         "11" => "viewform.tpl",
+       ),
+     ),
+   ),
+   "customstyles" => array(
+     "0" => array(
+       "atk/themes/iisg" => array(
+         "0" => "atkdateattribute.css",
+         "1" => "recordlist.css",
+         "2" => "style.css",
+         "3" => "tabs.css",
+         "4" => "top.css",
+       ),
+     ),
+     "1" => array(
+       "atk/themes/default" => array(
+         "0" => "atkdateattribute.css",
+         "1" => "dhtml_dropdown.css",
+         "2" => "recordlist.css",
+         "3" => "style.css",
+         "4" => "tabs.css",
+       ),
+     ),
+   ),
+   "customimgs" => array(
+     "0" => array(
+       "atk/themes/iisg" => array(
+         "0" => "help.gif",
+         "1" => "arrowup.gif",
+         "2" => "arrowdown.gif",
+         "3" => "dark_back.gif",
+         "4" => "empty.gif",
+       ),
+     ),
+     "1" => array(
+       "atk/themes/default" => array(
+         "0" => "help.gif",
+         "1" => "hide_bg.gif",
+         "2" => "hide_explorer.gif",
+         "3" => "menubanner.jpg",
+         "4" => "menulogo.gif",
+         "5" => "required_field.gif",
+         "6" => "show_explorer.gif",
+         "7" => "arrowup.gif",
+         "8" => "arrowdown.gif",
+         "9" => "dark_back.gif",
+         "10" => "empty.gif",
+       ),
+     ),
+   ),
+   "highlight" => "#eeeeee",
+   "select" => "#cccccc",
+   "ol_menucolor" => "#ffffff",
+   "ol_wincolor" => "#eeeee0",
+   "ol_background" => "#677EB1",
+   "tabtype" => "dhtml",
+   "recordlist_icons" => array(
+     "0" => array(
+       "atk/themes/default" => array(
+         "0" => "copy.gif",
+         "1" => "default.gif",
+         "2" => "delete.gif",
+         "3" => "done.gif",
+         "4" => "edit.gif",
+         "5" => "export.gif",
+         "6" => "preview.gif",
+         "7" => "select.gif",
+         "8" => "view.gif",
+       ),
+     ),
+   ),
+   "toolbar_icons" => array(
+     "0" => array(
+       "atk/themes/default" => array(
+         "0" => "bold.gif",
+         "1" => "delimiter.gif",
+         "2" => "italic.gif",
+         "3" => "link.gif",
+         "4" => "underline.gif",
+       ),
+     ),
+   ),
+   );
+?>

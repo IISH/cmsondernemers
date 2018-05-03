@@ -1,0 +1,280 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in ATK 5.1.0
+--------------------
++ Added $config_debuglog for realtime writing debug to file [Harrie]
++ Added $config_language_debugging for special debugging of
+  atkLanguages behaviour [Boy]
++ Added $config_smart_debug for dynamic debugging based on IP etc. [Peter]
++ Searching in nodes with AF_LARGE flag now is done with a textfield
+  (substring search) instead of a selectbox [Yury,Harrie,Boy]
++ Added $config_securerelation_decrypterror where you can specify
+  if you want to see decrypterrors (2) or get a mail when they occur (1)
+  or just hide them all together (null) [Boy]
++ Introduction of the atkMetaNode node which uses table meta data to
+  automatically add attributes (of the right type) to the node. [Peter]
++ Added atkMetaPolicy class which can be extended to implement a
+  custom meta policy for use by the atkMetaNode. To specify another
+  default meta policy for you application use the $config_meta_policy
+  configuration variable. [Peter]
++ Added atkMetaHandler class which can be used to call a method
+  which initializes the ATK meta policy before it adds the attributes
+  to the node. Class can also be extended for even more control.
+  Default implementation can be overriden using the $config_meta_handler
+  configuration variable. [Peter]
++ Added documentation to callback param and added "addSearchFilter" 
+  to add a filter to the searchNodeInstance of the fuzzySearch 
+  attribute. [Boy]
++ The CSV import feature can now update existing records. [Boy]
+* AF_RELATION_AUTOLINK now also works with AF_LARGE for manytoone. [Boy]
+* Fixed bug in securerelation (would sometimes do its queries on the
+  wrong table). [Harrie]
+* $config_language_basedir now defaults to "languages/" again. [Thom,Boy]
+* Searching in nodes with AF_LARGE fixed for secure relations. [Boy] 
+* The search part in selectDb() and countDb() is now performed after adding
+  attributes to query. [Boy]
+* atkDDL::create now has optional parameter for specifying the database
+  name instead of the globally configured database name. [Peter]
+* atkDB class contains meta data flags which can be used by subclasses
+  to return more detailed meta data. The flags are: MF_PRIMARY,
+  MF_UNIQUE, MF_NOT_NULL, MF_AUTO_INCREMENT. Subclasses should return
+  these flags in the "flags" field of the column meta data. [Peter]
+* atkPgSQLDB::metadata(...) now returns more detailed meta data,
+  including for each column the generic type ("gentype"), flags. [Peter]
+* atkMySQLDB::metadata(...) now returns more detailed meta data,
+  including for each column the generic type ("gentype"), flags. [Peter]  
+* Changed parseDate for date attribute to return the day in record
+  instead of day+1. [Harrie]
+* Fixed AF_NO_LABEL. [Boy]
+* Changed mysql_pconnect() to mysql_connect() because in many cases connection
+  persistence does not work as expected. [Boy]
+- Removed the auto selection from atkRadioAttribute. Now nothing is
+  selected not even when it is obligatory.[Wouter]
+* atkOneToOneRelation restores destination postvars after updating. [Boy]
+* Fixed dns lookup in atkEmailAttribute. [Andres]
+* Added primarykeyfield to searchfields in atkManyToOneRelation. [Boy]
+* Added protection in getSearchCondition against being called
+  with an array instead of a single value in atkattrib and boolattrib. [Boy]
+* Improved searching on securerelations. [Boy]
+* Ported translation for fsa_pleasemakeselection from atkFuzzySearchAttribute
+  from Achievo to ATK [Boy]
+* Removed redundant code and minor bugfixes on atkTheme, atkEditHandler,
+  atkEmailAttribute and atkAttribute [Andres,Boy]
+* Added searchmode param to atkNode's searchDb() method. [Boy]
+* atkErrorHandler now takes E_STRICT (php5) into account. [Brian]
+
+Changes in ATK 5.0.7
+--------------------
++ now openssl encryption possible for the atkSecureRelation [Mark]
++ atkFuzzySearchAttribute ported from Achievo to ATK [Boy]
++ Added AF_NO_TRANSLATION flag to listattribute, this will prevent
+  the options from being automatically translated [Boy]
++ Added $config_use_keyboard_handler with which you can turn
+  the keyboardhandler off [Boy]
++ Added NF_NO_IMPORT, this will hide the import link 
+  in the admin screen [Boy]
++ Added AF_DATE_DISPLAY_DAY which will make the display function
+  of a date attribute include the day of the week [Boy]
++ Added {atkstyle} plugin to template engine. [Ivo]
++ Added {atktext} plugin for internationalization in templates. [Ivo]
++ Added default fieldvalue and title row skip features to CSV import. [Mark]
++ atkFlagAttributes can now be searched. [Yury]
+* Attributes can now use preload for loading before the main query. [Ivo, Boy]
+* Optimized atkSecureRelation searching. [Ivo, Boy]
+* Fixed deleteAllowed in oneToManyRelation, when the filter is not 
+  on the destination node. [Boy,Harrie]
+* Fixed filtering and navigating after update/save for navigator [Boy]
+* Fixed bug that would produce php error with NF_EDITAFTERADD 
+  when a NULL value for a record is passed to editArray() [Boy]
+* Fixed prev/next keyboard navigation in recordlists. [Yury]
+* Fixed a potential session hijacking vulnerability. [Sandy]
+* Improved themeability, now possible to style the menu and top frame
+  differently from the main, by using templates and stylesheets. [Boy]
+* Fixed searching in oneToOneIntegrated relations and secureRelations,
+  for normal/extended searching and sorting. [Boy, Harrie]
+* Fixed navigating for select mode. [Boy, Yury]
+* Fixed navigating in embedded recordlists. [Harrie]
+* Fixed bug in NF_ML functionality for 'copy' action. [Lineke]
+* atkQuery now checks for double joins. [Boy,Harrie]
+* Added AF_CHECK_ALL and AF_LINKS_BOTTOM to multiselect attribute. [Boy]
+* Made atkFuzzySearch attrib use multiselect attribute and use the
+  new flags by default. [Boy]
+* Changed deprecated $txt_ global variables in mailreport() and the
+  atkdateattrib to atktext() calls. [Boy]
+* Bugfixes and codecleanups in CSV import feature (bug #406). [Ivo, Harrie]
+* Fixed a call-time-pass-by-reference. [Ivo]
+* Upgraded the adodb-time library, for better date support. [Harrie]
+* Updated Norwegian translation. [Olav]
+
+Changes in ATK 5.0.6
+--------------------
+* Bugfix in Oracle 9i/10G driver. [Ivo]
+* 'Import' link is now hidden if NF_READONLY is set. [Ivo]
+* Fixed bug in validateFilter for filters with tablename and added docs. [Boy]
+* Fixed bug in record navigator when no form was present on the page. [Ivo]
++ Base language directory can be set with $config_language_basedir. [Boy]
+* Default applicaton language dir is now languages/. [Ivo]
+
+Changes in ATK 5.0.5
+--------------------
++ Added generic CSV import feature. [Ivo, Mark]
++ Added atkFormatAttribute for editing formatted values. [Ivo]
++ Added paging to atkOneToManyrelation (embedded recordlists). [Harrie]
++ Added edit_values() and initial_values() methods to atkNode class. [Ivo]
++ Login screen now uses its own CSS file (login.css). [Boy]
++ Added autoadjust feature to atkTextAttribute. [Boy]
++ Added deleteAllowed method to all attributes, so attributes can now
+  'approve' the delete of a record. [Boy]
++ Added AF_RESTRICTED_DELETE flag to the atkOneToManyRelation. [Boy]
++ Added AF_DUMMY_SHOW_LABEL, which causes dummy attribs to be labeled [Boy]
++ Added register_hiddenvars() to atkPage [Boy]
++ Added flags to atkPage's render() method. [Sandy]
++ validateFilter() now recognizes all standard SQL operators. [Boy]
++ atkNavigator now accepts custom filters. [Boy]
+* Fixed alignment of fieldlabels and error messages. [Ivo]
+* Fix in NF_ML, when having optional relationships. [Lineke,Ivo]
+* Fixed removal of leading spaces from values by removing a php4.0.4pl1
+  compatibility hack. [Ivo]
+* Fixed bug in atkManyToOnerelation when pointing to a primarykey that in its
+  turn was a relation. [Lineke,Ivo]
+* atkManyBoolRelation now takes initial_values into account. [Ivo]
+* Fixed tooltip functionality. [Boy]
+* Replaced some globals with function calls (atkconfig, atktext). [Boy]
+* Moved Doctype to defaultconfig. [Boy]
+* Fix for bug that would cause obligatory atkdateattributes to be empty 
+  instead of assuming the current date [Boy]
+* Fixed DHTML tab functionality (last tab is now remembered). (bug #301) [Boy]
+* Fixed SQL errors in atkNavigator when when AF_LARGE is set and an atkfilter
+  is used [Boy, Yury]
+* Fixed bug in oneToManyRelation's isEmpty() method. [Harrie]
+* Fixed the outlook menu. (bug #352) [Sandy]
+* Fixed the help popup. (bug #347) [Thom]
+* Fixed help link in default view template. (bug #353) [Thom]
+* Fixed bug in editing empty choices in an atkManyToOneRelation. [Sandy]
+* Fixed a call-time-pass-by-reference. [Ivo]
+* Fixed a reference copy bug. (bug #350) [Yury]
+* atkOneToOne's AF_ONETOONE_INTEGRATE integrates columns in recordlists. 
+  (bug #346) [Ivo]
+* <attribute>_display overrides get passed the right $mode. (bug #339) [Ivo]
++ Added Slovak translation. [Danielk]
+* Updated French translation. [Camille]
+* Updated Norwegian translation. [Olav]
+* Updated Italian translation. [Fabrizio]
+
+Changes in ATK 5.0.4
+--------------------
++ Added atkCurrencyAttribute to display currency values. [Mark]
++ Added addSecurityMap() to atkNode to map privileges to other rights. [Mark]
++ Added encryption utilities (atkEncryption and atkBase64Encryption). [Mark]
++ Added atkSecureRelation for 'Privacy Enhancing Technologies' (PET). [Mark]
++ Added setNumbering() to atkNode, for numbering fields in the gui. [Boy]
++ Added onChange() handler functionality to atkDateAttribute. [Boy]
++ Added renderTop function which renders top.tpl if it exists, or box.tpl
+  if not (custom topframe template). [Boy]
++ Added set- and getSelected functionality to atkListAttribute [Boy]
++ Alignment of menu options can be configured with $config_menu_align. [Boy]
++ Added 'details' edit functionality to atkManyBoolRelation. [Ivo]
+* atkManyToOneRelation's 'none' string can be customized per node. [Mark]
+* atkLanguage now also supports empty values in language files. [Boy]
+* Fixed setting the correct initial tab. [Boy]
+* atkViewHandler hides back button if going back is not an option. [Mark]
+* Fixed bugs in AF_LARGE flag. (bug #302, #330) [Yury]
+* AF_RELATION_AUTOLINK checks edit/add permission when displaying links. [Ivo]
+* Fixed field/label alignment in outlook and default themes. [Ivo]
+* Fixed bug in atkManyToOnerelation when pointing to a primarykey that in its
+  turn was a manytoonerelation. [Lineke,Ivo]
+* atkListAttribute's display values are now fetchd from language file. [Ludo]
+* Fixed bug in postgres sequences support. [Jose]
+* Added 'between' search for PostgreSQL, fixed ddl driver. (bug #310) [Cesar]
++ Added Spanish translation. [Jose]
+* Updated German translation. [Udo]
+* Updated Russian translation and fixed charset problems. [Konstantin]
+
+Changes in ATK 5.0.3
+--------------------
+* Small bugfixes in language files. [Boy, Ivo]
+* Fixed bug in the value of NF_MULTILANGUAGE. [Ivo]
+* atkDateAttribute no longer displays current date unless obligatory. [Boy]
+* Fixed remaining bugs with tabs. (bug #301) [Boy]
+* If an attribute doesn't validate, the error now shows the tabname. [Boy]
+* Improvements and cleanups in atkLanguage. [Boy]
+* Small bugfix in atkFileExport, and added XML mime type. [Sandy]
+* Small modifications to facilitate HTML 4.01 validation. [Boy]
+* Improvements to atkTheme and atkThemeCompiler:
+  * atkTheme now uses default icon if it can't find any. [Boy]
+  * Added config variable that forces recompile of theme cache. [Boy]
+  * Writing cache file now reports an error if something is wrong. [Boy]
+  + Autodetecting of themefiles. [Boy]
+* Fix for bug with select pages when AF_LARGE is set. (bug #302) [Boy]
+* Fixed the Multi Record Actions. [Sandy] 
+* Fixed bug in the fileattribute. (bug #300) [Sandy]
+* Fixed bug with tabs and modifiers. (bug #311) [Boy]
+* Updated atktools documentation. [Boy]
+* Fixed typo in a flag that caused a wrong count query. (bug #307) [Nicola]
+* Fixed bug in the atkmanytoonerelation. (bug #308) [Ruiz]
+* Fixed bug in saving float values (atknumberattribute) [Martin]
+* Bugfix in the mlsplitter The default language of an attribute wasn't
+  restored to its original value. When using multiple attributes of the
+  same type this could lead to not updating the attribute correctly. [Martin]
+* Bugfix in the onetoonerelation. Changed the behaviour of the addtoquery.
+  When empty the refkey is now always updated. [Martin]
+
+Changes in ATK 5.0.2
+--------------------
+* Fixed missing db_sequence entries in demo install.sql file. [Yury]
+* Fixed several bugs in dhtml tabs. (bug #301) [Boy]
+* Fixed NF_LOCK images. [Boy]
+* Fixed bug in atkFileAttribute's AF_FILE_PHYSICAL_DELETE. [Ivo]
+* atkNumberAttribute can now save NULL values. [Martin]
+
+Changes in ATK 5.0.1
+--------------------
++ Added getAttribute() method to atkNode. [Ivo]
++ Added 2 lessons to demo application. [Sandy]
+* Added missing strings to language files. [Ivo]
+* Improvements to PostgreSQL driver. [Peter]
++ Implemented atkDDL driver for PostgreSQL. [Peter]
+* Fixed default value of $config_application_root for win compatibility. [Ivo]
+* Updated API documentation. [Ivo]
+* Fixed small bug for the Multi Record Actions. [Sandy]
++ Added Polish language file. [Lech]
+
+Changes in ATK 5.0
+------------------
++ Added keyboard navigation. [Ivo]
++ Added Smarty template engine for gui rendering. [Ivo]
++ Forms are now templatable. 
++ Implemented new GUI architecture around atkPage/atkTheme/atkUi. [Ivo]
++ Added action handler API. [Ivo, Martin]
++ Implemented theme inheritance. [Boy]
++ Added DHTML tab support (tabs without reloads). [Ber]
++ Added generic multisort capability to recordlists. [Ivo]
++ Released ATK as a standalone web application development framework. [Ivo]
+* Moved to dual licensing scheme based on Sleepycat license. 
+* Enabled all non-light options: 
+  + Application level record locking. [Peter]  
+  + atkFileEditor (file based node, instead of database based). [Ivo]
+  + Wysiwyg attribute [Lineke, Ivo]
+  + Various other attributes. [Martin, Lineke, Ivo]
+  + atkTreeNode for managing tree relationships in a node. [Sandy, Ivo]
+  + Multilanguage attributes for data internationalization. [Martin, Peter]
+
+Note: The CHANGES file has not been accurately updated until the release of
+ATK 5.0. The changes below are rough feature indications.
+ 
+Changes in ATK 4.0 Light
+------------------------
+ATK 4 was the PHP4 release of ATK. The light version was the version that has
+accompanied Achievo (http://www.achievo.org) from approx. 0.6 to 1.1, and was
+not publically available outside of Achievo. A detailed changelog has not
+been kept. Most changes can be traced back to entries in Achievo's CHANGES
+file.
+
+Changes in ATK 3.0 Light
+------------------------
+ATK 3 was the first publicly available release, but only as part of 
+Achievo. based on PHP3. All was new, so a list of changes is not present.

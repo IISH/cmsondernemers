@@ -1,0 +1,32 @@
+<?php
+$nl=array(
+	"menu_ondernemers" => "Ondernemers"
+	, "menu_submenu_ondernemers" => "Ondernemers"
+	, "menu_submenu_sbicodes" => "SBI codes"
+
+	, "ondernemers_ondernemers" => "Ondernemers"
+	, "ondernemers_bron" => "Bronnen"
+	, "ondernemers_ondernemers_bron" => "Bronnen"
+	, "ondernemers_sbicodes" => "SBI codes"
+	, "ondernemers_ondernemers_sbicodes" => "SBI codes"
+	, "ondernemers_sbi" => "SBI codes"
+	, "ondernemers_ondernemers_sbi" => "SBI codes"
+	, "ondernemers_externedataset_link" => "Externe dataset"
+	, "ondernemers_ondernemers_externedataset_link" => "Externe dataset"
+	, "ondernemers_dataset_bestandsnaam" => "Dataset"
+	, "ondernemers_ondernemers_dataset_bestandsnaam" => "Dataset"
+
+	, "ondernemers_sbi_sbicodeid" => "SBI code"
+	, "ondernemers_externedataset_link_externedataset" => "Externe dataset"
+	, "ondernemers_dataset_bestandsnaam_bestandsnaam_pdf" => "PDF bestand"
+	, "ondernemers_dataset_bestandsnaam_bestandsnaam_text" => "TXT bestand"
+
+	, "tab_default" => "Algemeen"
+	, "tab_ondernemers_bron" => "Bronnen"
+	, "tab_ondernemers_sbi" => "SBI codes"
+	, "tab_ondernemers_externedataset_link" => "Externe dataset"
+	, "tab_ondernemers_dataset_bestandsnaam" => "Dataset"
+
+	, "fld_is_deleted" => "Verwijderen?"
+);
+?>

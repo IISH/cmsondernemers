@@ -1,0 +1,16 @@
+<?php
+
+  $nl = array(
+
+	'app_title' => 'CMS Ondernemers'
+	, 'txt_app_title' => 'Uitleg over ...'
+	, 'app_shorttitle' => 'CMS Ondernemers'
+	, 'app_description' => 'Dit is het IISG Content Beheer Systeem. Kies uit één van de hiernaast getoonde menu keuzes.'
+
+	, "view_xml_file" => "Bekijk XML bestand"
+	, "create_xml_file" => "Cre&euml;er XML bestand"
+
+	, "admin" => "Overzicht"
+  );
+
+?>
